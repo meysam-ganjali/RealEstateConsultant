@@ -864,6 +864,19 @@
             "rid": "win"
           }
         }
+      },
+      "RealEstateConsultant.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Stores": "6.0.10"
+        },
+        "compile": {
+          "bin/placeholder/RealEstateConsultant.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RealEstateConsultant.Entities.dll": {}
+        }
       }
     }
   },
@@ -2176,6 +2189,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "RealEstateConsultant.Entities/1.0.0": {
+      "type": "project",
+      "path": "../RealEstateConsultant.Entities/RealEstateConsultant.Entities.csproj",
+      "msbuildProject": "../RealEstateConsultant.Entities/RealEstateConsultant.Entities.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2185,7 +2203,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Relational >= 6.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.10",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.10"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.10",
+      "RealEstateConsultant.Entities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2220,7 +2239,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Entities\\RealEstateConsultant.Entities.csproj": {
+              "projectPath": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Entities\\RealEstateConsultant.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

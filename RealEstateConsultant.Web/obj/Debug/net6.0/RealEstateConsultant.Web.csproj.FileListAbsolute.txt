@@ -272,3 +272,5 @@ E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debu
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.DataAccess.dll
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.DataAccess.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Entities.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Entities.pdb

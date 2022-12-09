@@ -2317,10 +2317,19 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.Relational": "6.0.10",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
+          "RealEstateConsultant.Entities": "1.0.0"
         },
         "runtime": {
           "RealEstateConsultant.DataAccess.dll": {}
+        }
+      },
+      "RealEstateConsultant.Entities/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Stores": "6.0.10"
+        },
+        "runtime": {
+          "RealEstateConsultant.Entities.dll": {}
         }
       }
     }
@@ -3578,6 +3587,11 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "RealEstateConsultant.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RealEstateConsultant.Entities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

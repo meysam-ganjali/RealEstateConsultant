@@ -12,3 +12,6 @@ E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\o
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.pdb
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.genruntimeconfig.cache
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\ref\RealEstateConsultant.DataAccess.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\bin\Debug\net6.0\RealEstateConsultant.Entities.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\bin\Debug\net6.0\RealEstateConsultant.Entities.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.csproj.CopyComplete
