@@ -1,49 +1,265 @@
-﻿<!DOCTYPE html>
+﻿
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RealEstateConsultant.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RealEstateConsultant.Web.styles.css" asp-append-version="true" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link href="~/css/all.css" rel="stylesheet">
+    <!-- Owl Carousel CSS -->
+    <link href="~/css/owl.carousel.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link href="~/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link href="~/css/style.css" rel="stylesheet">
+    <title>Real Estate</title>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RealEstateConsultant.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+    <!--Topbar Start-->
+    <div class="topbar-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4">
+                    <ul class="social_media style_none">
+                        <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
+                <div class="col-lg-6 col-md-8">
+                    <div class="top_right">
+                        <div class="topbar_phone">
+                            <a href="#">
+                                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                                021-12346578
+                            </a>
+                        </div>
+                        <div class="topbar_login"><a href="submit_property.html"> ثبت ملک</a></div>
+                    </div>
+                </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <!--Topbar End-->
+    <!--Header Start-->
+    <div class="header-wrap wow fadeInUp">
         <div class="container">
-            &copy; 2022 - RealEstateConsultant.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-lg-3 navbar navbar-expand-lg navbar-light">
+                    <div class="header_logo"><a href="#"><img alt="" src="~/images/logo.png"></a></div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="col-lg-9">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <button class="close-toggler" type="button" data-toggle="offcanvas">
+                                <span>
+                                    <i class="fas fa-times-circle" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">
+                                        خانه <span class="caret"><i class="fas fa-caret-down"></i></span>
+                                    </a> <i class="fas fa-caret-down"></i>
+                                    <ul class="submenu">
+                                        <li><a href="index.html">خانه 1</a></li>
+                                        <li><a href="index_slider.html">خانه 2</a></li>
+                                        <li><a href="index_video.html">خانه 3</a></li>
+                                        <li><a href="index_map.html">خانه 4</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        املاک <span class="caret">
+                                            <i class="fas fa-caret-down"></i>
+                                        </span>
+                                    </a> <i class="fas fa-caret-down"></i>
+                                    <ul class="submenu">
+                                        <li><a href="property_grid.html">املاک شبکه ای</a></li>
+                                        <li><a href="property_list.html">املاک لیستی</a></li>
+                                        <li><a href="property_map.html">املاک نقشه</a></li>
+                                        <li><a href="property_single.html">جزئیات ملک</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#.">
+                                        امکانات <span class="caret">
+                                            <i class="fas fa-caret-down"></i>
+                                        </span>
+                                    </a> <i class="fas fa-caret-down"></i>
+                                    <ul class="submenu">
+                                        <li><a href="agents.html">مشاوران</a></li>
+                                        <li><a href="agents_single.html">جزئیات مشاوران</a></li>
+                                        <li><a href="agencies.html">نمایندگی ها</a></li>
+                                        <li><a href="agencies_single.html">جزئیات نمایندگی</a></li>
+                                        <li><a href="submit_property.html">ارسال ملک</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#.">
+                                        صفحات <span class="caret">
+                                            <i class="fas fa-caret-down"></i>
+                                        </span>
+                                    </a> <i class="fas fa-caret-down"></i>
+                                    <ul class="submenu">
+                                        <li><a href="about.html">درباره ما</a></li>
+                                        <li><a href="team.html">تیم ما</a></li>
+                                        <li><a href="login.html">ورود</a></li>
+                                        <li><a href="register.html">ثبت نام</a></li>
+                                        <li><a href="faqs.html">سؤالات متداول</a></li>
+                                        <li><a href="testimonials.html">نظرات مشتریان</a></li>
+                                        <li><a href="pricing.html">لیست قیمت</a></li>
+                                        <li><a href="404.html">صفحه 404 </a></li>
+                                        <li><a href="typography.html">تایپوگرافی</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="blog.html">
+                                        وبلاگ <span class="caret">
+                                            <i class="fas fa-caret-down"></i>
+                                        </span>
+                                    </a> <i class="fas fa-caret-down"></i>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">وبلاگ شبکه ای</a></li>
+                                        <li><a href="blog_grid.html">وبلاگ شبکه ای با نوار کناری</a></li>
+                                        <li><a href="blog_list.html">وبلاگ لیستی</a></li>
+                                        <li><a href="blog_single.html">جزئیات وبلاگ</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html"> تماس با ما</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Header End-->
+    @RenderBody()
+
+    <!--Footer Start-->
+    <footer class="footer bg-style wow fadeInUp">
+        <div class="container">
+            <div class="footer-upper">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12">
+                        <div class="footer-widget about-widget">
+                            <a href="#">
+                                <img src="~/images/logo2.png"
+                                     alt="Awesome Image">
+                            </a>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                            </p>
+                            <div class="readmore"><a href="#">بیشتر </a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="footer-widget quick-links">
+                            <h3 class="title">لینک های سریع</h3>
+                            <ul>
+                                <li><a href="#."> خانه</a> </li>
+                                <li><a href="#."> خصوصیات</a> </li>
+                                <li><a href="#."> مشاوران</a> </li>
+                                <li><a href="#."> وبلاگ</a> </li>
+                                <li><a href="#."> تماس با ما</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5">
+                        <div class="footer-widget contact">
+                            <h3 class="title">ویژگی های اخیر</h3>
+                            <ul class="property_sec">
+                                <li>
+                                    <div class="rec_proprty">
+                                        <div class="propertyImg"><img src="~/images/property_small01.jpg"></div>
+                                        <div class="property_info">
+                                            <h4><a href="#">ایران , تهران , زعفرانیه</a></h4>
+                                            <p>خیابان هستی , ساختمان مهر</p>
+                                            <div class="priceWrp">98000 تومان</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rec_proprty">
+                                        <div class="propertyImg"><img src="~/images/property_small02.jpg"></div>
+                                        <div class="property_info">
+                                            <h4><a href="#">ایران , تهران , زعفرانیه</a></h4>
+                                            <p>خیابان هستی , ساختمان مهر</p>
+                                            <div class="priceWrp">98000 تومان</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4">
+                        <div class="footer-widget contact">
+                            <h3 class="title">اطلاعات تماس</h3>
+                            <ul class="footer-adress">
+                                <li class="footer_address">
+                                    <i class="fas fa-map-signs"></i> <span>
+                                        تهران , زعفرانیه ,
+                                        خیابان هستی
+                                    </span>
+                                </li>
+                                <li class="footer_email">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i> <span>
+                                        <a href="mailto:info@realestate.com"> info@realestate.com </a>
+                                    </span>
+                                </li>
+                                <li class="footer_phone">
+                                    <i class="fas fa-phone-alt"></i> <span>
+                                        <a href="tel:021-12345678"> 021-12345678</a>
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="social-icons footer_icon">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <!--Footer End-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="~/js/owl.carousel.js"></script>
+    <!-- wow js -->
+    <script src="~/js/animate.js"></script>
+    <script src="~/js/jquery.nice-select.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- general script file -->
+    <script src="~/js/wow.js"></script>
+    <script src="~/js/script.js"></script>
+    @await RenderSectionAsync("Scripts",false)
 </body>
+
 </html>
