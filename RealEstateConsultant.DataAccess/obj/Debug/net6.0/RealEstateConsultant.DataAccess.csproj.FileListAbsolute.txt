@@ -1,0 +1,14 @@
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\bin\Debug\net6.0\RealEstateConsultant.DataAccess.deps.json
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\bin\Debug\net6.0\RealEstateConsultant.DataAccess.runtimeconfig.json
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\bin\Debug\net6.0\RealEstateConsultant.DataAccess.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\bin\Debug\net6.0\RealEstateConsultant.DataAccess.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.csproj.AssemblyReference.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.AssemblyInfoInputs.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.AssemblyInfo.cs
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.csproj.CoreCompileInputs.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\refint\RealEstateConsultant.DataAccess.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\RealEstateConsultant.DataAccess.genruntimeconfig.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.DataAccess\obj\Debug\net6.0\ref\RealEstateConsultant.DataAccess.dll
