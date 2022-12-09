@@ -5,7 +5,7 @@ using RealEstateConsultant.Web.Data;
 #region Variables
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("DataBaseContextConnection") ?? throw new InvalidOperationException("Connection string 'DataBaseContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DataBaseContextConnection");
 
 
 #endregion

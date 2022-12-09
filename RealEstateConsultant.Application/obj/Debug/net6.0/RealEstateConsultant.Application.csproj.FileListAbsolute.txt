@@ -1,0 +1,12 @@
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\bin\Debug\net6.0\RealEstateConsultant.Application.deps.json
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\bin\Debug\net6.0\RealEstateConsultant.Application.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\bin\Debug\net6.0\RealEstateConsultant.Application.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.csproj.AssemblyReference.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.AssemblyInfoInputs.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.AssemblyInfo.cs
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.csproj.CoreCompileInputs.cache
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\refint\RealEstateConsultant.Application.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\RealEstateConsultant.Application.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Application\obj\Debug\net6.0\ref\RealEstateConsultant.Application.dll
