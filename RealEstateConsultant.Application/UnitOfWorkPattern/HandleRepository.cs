@@ -12,9 +12,11 @@ public class HandleRepository: IHandleRepository
     {
         _db = db;
         ApplicationUser = new ApplicationUserRepository(_db);
+        MainCategory = new MainCategoryRepository(_db);
     }
 
     public IApplicationRepository ApplicationUser { get; private set; }
+    public IMainCategoryRepository MainCategory { get; private set; }
     public async Task SaveAsync()
     {
         await _db.SaveChangesAsync();
