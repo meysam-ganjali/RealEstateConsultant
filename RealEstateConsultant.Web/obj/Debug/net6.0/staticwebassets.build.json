@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jRSLPGphFLb8ShR/APkG3iCkiwlreut+YZzNxmFIMic=",
+  "Hash": "DGfrNXr4ybB24bkOPI8w31JIzuj3icM1EMgfbSevTb0=",
   "Source": "RealEstateConsultant.Web",
   "BasePath": "_content/RealEstateConsultant.Web",
   "Mode": "Default",
@@ -60926,6 +60926,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\adminassets\\assets\\libs\\nestable\\jquery.nestable.js"
+    },
+    {
+      "Identity": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Web\\wwwroot\\adminassets\\assets\\libs\\nicedit\\niceditjs.js",
+      "SourceId": "RealEstateConsultant.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Web\\wwwroot\\",
+      "BasePath": "_content/RealEstateConsultant.Web",
+      "RelativePath": "adminassets/assets/libs/nicedit/niceditjs.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\adminassets\\assets\\libs\\nicedit\\niceditjs.js"
     },
     {
       "Identity": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Web\\wwwroot\\adminassets\\assets\\libs\\nouislider\\distribute\\nouislider.min.css",

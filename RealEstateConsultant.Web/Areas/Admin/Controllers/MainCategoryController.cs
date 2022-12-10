@@ -15,10 +15,21 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             _environment = environment;
         }
         private IHostingEnvironment _environment;
+        
+        /*****************    Get Action    ************************/
         public async Task<IActionResult> Index()
         {
             var res = await _handleRepository.MainCategory.GetAll(includeProperties: "ChildCategories");
             return View(res);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateParentCategory()
+        {
+            return View();
+        }
+
+        /*****************    Post Action    ************************/
+        
     }
 }
