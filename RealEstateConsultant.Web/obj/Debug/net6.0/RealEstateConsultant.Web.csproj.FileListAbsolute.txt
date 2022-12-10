@@ -274,3 +274,8 @@ E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debu
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.DataAccess.pdb
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Entities.dll
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Entities.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Application.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Utilities.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Application.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\bin\Debug\net6.0\RealEstateConsultant.Utilities.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Web\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css

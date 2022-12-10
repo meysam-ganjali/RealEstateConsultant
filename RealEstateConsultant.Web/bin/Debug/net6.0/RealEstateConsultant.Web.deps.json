@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
+          "RealEstateConsultant.Application": "1.0.0",
           "RealEstateConsultant.DataAccess": "1.0.0"
         },
         "runtime": {
@@ -2312,6 +2313,15 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "RealEstateConsultant.Application/1.0.0": {
+        "dependencies": {
+          "RealEstateConsultant.DataAccess": "1.0.0",
+          "RealEstateConsultant.Utilities": "1.0.0"
+        },
+        "runtime": {
+          "RealEstateConsultant.Application.dll": {}
+        }
+      },
       "RealEstateConsultant.DataAccess/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
@@ -2330,6 +2340,11 @@
         },
         "runtime": {
           "RealEstateConsultant.Entities.dll": {}
+        }
+      },
+      "RealEstateConsultant.Utilities/1.0.0": {
+        "runtime": {
+          "RealEstateConsultant.Utilities.dll": {}
         }
       }
     }
@@ -3586,12 +3601,22 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
+    "RealEstateConsultant.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "RealEstateConsultant.DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "RealEstateConsultant.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RealEstateConsultant.Utilities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
