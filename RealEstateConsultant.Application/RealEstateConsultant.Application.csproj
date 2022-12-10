@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstateConsultant.DataAccess\RealEstateConsultant.DataAccess.csproj" />
+    <ProjectReference Include="..\RealEstateConsultant.Utilities\RealEstateConsultant.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>
