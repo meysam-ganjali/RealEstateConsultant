@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YQ6s71/B0JALo2lS2w7i4ZY4OFTs1Ba8QxTEag1oSRA=",
+  "Hash": "jRSLPGphFLb8ShR/APkG3iCkiwlreut+YZzNxmFIMic=",
   "Source": "RealEstateConsultant.Web",
   "BasePath": "_content/RealEstateConsultant.Web",
   "Mode": "Default",
@@ -80153,6 +80153,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Web\\wwwroot\\no-image.png",
+      "SourceId": "RealEstateConsultant.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Web\\wwwroot\\",
+      "BasePath": "_content/RealEstateConsultant.Web",
+      "RelativePath": "no-image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\no-image.png"
     },
     {
       "Identity": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Web\\wwwroot\\rs-plugin\\assets\\loader.gif",
