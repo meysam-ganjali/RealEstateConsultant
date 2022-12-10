@@ -3615,6 +3615,20 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "RealEstateConsultant.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "RealEstateConsultant.DataAccess": "1.0.0",
+          "RealEstateConsultant.Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RealEstateConsultant.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RealEstateConsultant.Application.dll": {}
+        }
+      },
       "RealEstateConsultant.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3643,6 +3657,16 @@
         },
         "runtime": {
           "bin/placeholder/RealEstateConsultant.Entities.dll": {}
+        }
+      },
+      "RealEstateConsultant.Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/RealEstateConsultant.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RealEstateConsultant.Utilities.dll": {}
         }
       }
     }
@@ -10275,6 +10299,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "RealEstateConsultant.Application/1.0.0": {
+      "type": "project",
+      "path": "../RealEstateConsultant.Application/RealEstateConsultant.Application.csproj",
+      "msbuildProject": "../RealEstateConsultant.Application/RealEstateConsultant.Application.csproj"
+    },
     "RealEstateConsultant.DataAccess/1.0.0": {
       "type": "project",
       "path": "../RealEstateConsultant.DataAccess/RealEstateConsultant.DataAccess.csproj",
@@ -10284,6 +10313,11 @@
       "type": "project",
       "path": "../RealEstateConsultant.Entities/RealEstateConsultant.Entities.csproj",
       "msbuildProject": "../RealEstateConsultant.Entities/RealEstateConsultant.Entities.csproj"
+    },
+    "RealEstateConsultant.Utilities/1.0.0": {
+      "type": "project",
+      "path": "../RealEstateConsultant.Utilities/RealEstateConsultant.Utilities.csproj",
+      "msbuildProject": "../RealEstateConsultant.Utilities/RealEstateConsultant.Utilities.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10295,6 +10329,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.10",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.10",
+      "RealEstateConsultant.Application >= 1.0.0",
       "RealEstateConsultant.DataAccess >= 1.0.0"
     ]
   },
@@ -10331,6 +10366,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Application\\RealEstateConsultant.Application.csproj": {
+              "projectPath": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Application\\RealEstateConsultant.Application.csproj"
+            },
             "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.DataAccess\\RealEstateConsultant.DataAccess.csproj": {
               "projectPath": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.DataAccess\\RealEstateConsultant.DataAccess.csproj"
             }

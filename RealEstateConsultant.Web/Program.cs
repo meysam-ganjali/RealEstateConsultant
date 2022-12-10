@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RealEstateConsultant.Application.UnitOfWorkPattern;
 using RealEstateConsultant.Web.Data;
 
 #region Variables
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<DataBaseContext>(options =>
 
 builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<DataBaseContext>();
+builder.Services.AddScoped<IHandleRepository, HandleRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

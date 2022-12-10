@@ -11,4 +11,8 @@
     <ProjectReference Include="..\RealEstateConsultant.Utilities\RealEstateConsultant.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UnitOfWorkPattern\" />
+  </ItemGroup>
+
 </Project>

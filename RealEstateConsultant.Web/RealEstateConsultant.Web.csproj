@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RealEstateConsultant.Application\RealEstateConsultant.Application.csproj" />
     <ProjectReference Include="..\RealEstateConsultant.DataAccess\RealEstateConsultant.DataAccess.csproj" />
   </ItemGroup>
 
