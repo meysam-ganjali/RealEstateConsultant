@@ -19,6 +19,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Programing/Project/Web/RealEstateConsultant/RealEstateConsultant.Web/Areas/Admin/Views/MainCategory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFpbkNhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Programing/Project/Web/RealEstateConsultant/RealEstateConsultant.Web/Areas/Admin/Views/Shared/_AsideNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Bc2lkZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

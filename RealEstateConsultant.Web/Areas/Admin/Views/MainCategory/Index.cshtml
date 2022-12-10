@@ -1,0 +1,102 @@
+﻿@model IEnumerable<RealEstateConsultant.Entities.MainCategory>
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            <h5 class="page-title h6">لیست دسته بندی ها</h5>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/Admin">خانه</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">لیست دسته بندی ها</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- basic table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Zero Configuration</h4>
+                <h6 class="card-subtitle">
+                    DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function:
+                </h6>
+                <div class="table-responsive">
+                    <table id="zero_config" class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>لوگو</th>
+                                <th>عنوان دسته بندی</th>
+                                <th>ترتیب نمایش</th>
+                                <th>تعداد زیر دسته ها</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count() < 1)
+                            {
+                                <tr>
+                                    <td colspan="5">دسته بندی یافت نشد ابتدا یک دسته ثبت کنید</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var cat in Model.ToList())
+                                {
+                                    <tr>
+                                        @if (!string.IsNullOrWhiteSpace(cat.LogoPath))
+                                        {
+                                            <td>
+                                                <img src="~/@cat.LogoPath" width="42" height="42"/>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <img src="~/no-image.png" width="42" height="42" />
+                                            </td>
+                                        }
+                                        <td>@cat.Name</td>
+                                        <td>@cat.DisplayOrder</td>
+                                        <td>
+                                            @cat.ChildCategories.Count()
+                                        </td>
+                                        <td>
+                                            <div class="btn-group-sm">
+                                                <a class="btn btn-sm btn-primary waves-effect waves-light text-white" >
+                                                    <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                                </a>
+                                                @if (cat.ChildCategories.Count > 0)
+                                                {
+                                                    <a class="btn btn-sm btn-info waves-effect waves-light text-white">
+                                                        <span class="btn-label"><i class="fa fa-eye"></i></span> زیر دسته ها
+                                                    </a>
+                                                }
+                                                <a class="btn btn-sm btn-success waves-effect waves-light text-dark">
+                                                    <span class="btn-label"><i class="fa fa-plus"></i></span> افزودن زیردسته
+                                                </a>
+                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white">
+                                                    <span class="btn-label"><i class="fa fa-trash"></i></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/adminassets/dist/js/pages/datatable/datatable-basic.init.js"></script>
+}
