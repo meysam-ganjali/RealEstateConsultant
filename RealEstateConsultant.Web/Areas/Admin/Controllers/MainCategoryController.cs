@@ -9,16 +9,24 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class MainCategoryController : Controller
     {
-        private readonly IHandleRepository _handleRepository;
+        #region Ctor
 
+
+        private readonly IHandleRepository _handleRepository;
+        private IHostingEnvironment _environment;
         public MainCategoryController(IHandleRepository handleRepository, IHostingEnvironment environment)
         {
             _handleRepository = handleRepository;
             _environment = environment;
         }
-        private IHostingEnvironment _environment;
-        
-        /*****************    Get Action    ************************/
+        #endregion
+
+
+        #region Parent Category
+
+
+        #region Get Action
+
         public async Task<IActionResult> Index()
         {
             var res = await _handleRepository.MainCategory.GetAll(includeProperties: "ChildCategories");
@@ -31,7 +39,11 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             return View();
         }
 
-        /*****************    Post Action    ************************/
+        #endregion
+
+        #region Post Action
+
+
         [HttpPost]
         public async Task<IActionResult> CreateParentCategory(MainCategory mainCategory)
         {
@@ -39,7 +51,7 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             UploadHelper UploadObj = new UploadHelper(_environment);
             if (files.Count > 0)
             {
-            mainCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\main_cat_logo\").FileNameAddress;
+                mainCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\main_cat_logo\").FileNameAddress;
 
             }
 
@@ -71,9 +83,21 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             _handleRepository.SaveAsync();
             return Json(res);
         }
+        #endregion
+
+
+        #endregion
+
+        #region Chiald Category
+
+        #region Get Action
 
 
 
+        #endregion
+
+
+        #region Post Action
         [HttpPost]
         public async Task<IActionResult> CreateChialdCategory(ChildCategory childCategory)
         {
@@ -100,5 +124,12 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
                 return Redirect("/Admin/MainCategory/Index");
             }
         }
+
+
+        #endregion
+
+        #endregion
+
+
     }
 }
