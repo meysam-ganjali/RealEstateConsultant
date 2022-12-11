@@ -383,12 +383,13 @@
     <!-- ============================================================== -->
     <!-- customizer Panel -->
     <!-- ============================================================== -->
-   <partial name="_SettingSidBar"/>
+    <partial name="_SettingSidBar" />
     <div class="chat-windows"></div>
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="~/adminassets/assets/libs/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/adminassets/assets/libs/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/adminassets/jquery/dist/jquery.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="~/adminassets/assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="~/adminassets/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -416,8 +417,10 @@
     <script src="~/adminassets/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
     <script src="~/adminassets/dist/js/pages/dashboards/dashboard1.js"></script>
     <script src="~/adminassets/assets/extra-libs/DataTables/datatables.min.js"></script>
-
+    <script src="~/adminassets/assets/libs/tinymce/tinymce.min.js"></script>
+    <script src="~/adminassets/assets/libs/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     @await RenderSectionAsync("Scripts",false)
+    @await RenderSectionAsync("Modals",false)
 </body>
 
 </html>

@@ -71,5 +71,34 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             _handleRepository.SaveAsync();
             return Json(res);
         }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateChialdCategory(ChildCategory childCategory)
+        {
+            var files = HttpContext.Request.Form.Files;
+            UploadHelper UploadObj = new UploadHelper(_environment);
+            if (files.Count > 0)
+            {
+                childCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\main_cat_logo\").FileNameAddress;
+
+            }
+
+            var res = await _handleRepository.ChialdCategory.Add(childCategory);
+            await _handleRepository.SaveAsync();
+            if (res.Status)
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Success";
+                return Redirect("/Admin/MainCategory/Index");
+            }
+            else
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Error";
+                return Redirect("/Admin/MainCategory/Index");
+            }
+        }
     }
 }
