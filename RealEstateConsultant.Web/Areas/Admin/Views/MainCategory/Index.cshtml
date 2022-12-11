@@ -83,7 +83,7 @@
                                                 <a class="btn btn-sm btn-success waves-effect waves-light text-dark">
                                                     <span class="btn-label"><i class="fa fa-plus"></i></span> افزودن زیردسته
                                                 </a>
-                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white">
+                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveCategory('@cat.Id','@cat.Name')">
                                                     <span class="btn-label"><i class="fa fa-trash"></i></span>
                                                 </a>
                                             </div>
@@ -99,6 +99,62 @@
     </div>
 </div>
 @section Scripts
-    {
+{
+    <script src="~/adminassets/Sweetalert2/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="~/adminassets/Sweetalert2/sweetalert2.min.css" />
     <script src="~/adminassets/dist/js/pages/datatable/datatable-basic.init.js"></script>
+    
+    <script>
+        function RemoveCategory(id, title) {
+            swal.fire({
+                title: 'حذف دسته بندی' + '  ' + title,
+                text: "کاربر گرامی  مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#7cacbe',
+                confirmButtonText: 'بله ',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+
+                    var postData = {
+                        'id': id
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "/Admin/MainCategory/DeleteMainCategory/",
+                        data: postData,
+                        success: function (data) {
+                            if (data.status == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+                            } else {
+
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            });
+        }
+    </script>
 }

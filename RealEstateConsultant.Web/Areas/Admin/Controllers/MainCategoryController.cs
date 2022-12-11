@@ -58,5 +58,18 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
                 return Redirect("/Admin/MainCategory/Index");
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteMainCategory(int id)
+        {
+            var cat = await _handleRepository.MainCategory.GetFirstOrDefault(filter: u => u.Id.Equals(id));
+            if (cat == null)
+            {
+                return Json(new { message = "دسته بندی یافت نشد" });
+            }
+            var res = await _handleRepository.MainCategory.Remove(cat);
+            _handleRepository.SaveAsync();
+            return Json(res);
+        }
     }
 }
