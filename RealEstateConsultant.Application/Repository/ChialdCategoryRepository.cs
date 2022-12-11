@@ -1,4 +1,5 @@
-﻿using RealEstateConsultant.Application.Repository.IRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using RealEstateConsultant.Application.Repository.IRepository;
 using RealEstateConsultant.Entities;
 using RealEstateConsultant.Utilities;
 using RealEstateConsultant.Web.Data;
@@ -13,8 +14,42 @@ public class ChialdCategoryRepository:Repository<ChildCategory>,IChialdCategoryR
     {
         _db = db;
     }
-    public Task<ResultDto> UpdateChialdCategoryAsync(ChildCategory childCategory)
+    public async Task<ResultDto> UpdateChialdCategoryAsync(ChildCategory childCategory)
     {
-        throw new NotImplementedException();
+        var chialdCatFromDb = await _db.ChildCategories.FirstOrDefaultAsync(c => c.Id == childCategory.Id);
+        if (chialdCatFromDb == null)
+        {
+            return new ResultDto
+            {
+                Message = "دسته بندی یافت نشد",
+                Status = false
+            };
+        }
+
+        try
+        {
+
+            if (!string.IsNullOrWhiteSpace(childCategory.LogoPath))
+            {
+                chialdCatFromDb.LogoPath = childCategory.LogoPath;
+            }
+
+            chialdCatFromDb.Name = childCategory.Name;
+            chialdCatFromDb.Decription = childCategory.Decription;
+            chialdCatFromDb.DisplayOrder = childCategory.DisplayOrder;
+            return new ResultDto
+            {
+                Message = $"دسته بندی {chialdCatFromDb.Name} با کد {chialdCatFromDb.Id} با موفقیت بروز شد",
+                Status = true
+            };
+        }
+        catch (Exception e)
+        {
+            return new ResultDto
+            {
+                Message = e.Message,
+                Status = false
+            };
+        }
     }
 }
