@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstateConsultant.Application.UnitOfWorkPattern;
+using RealEstateConsultant.Entities;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace RealEstateConsultant.Web.Areas.Admin.Controllers
@@ -30,6 +31,10 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
         }
 
         /*****************    Post Action    ************************/
-        
+        [HttpPost]
+        public async Task<IActionResult> CreateParentCategory(MainCategory mainCategory)
+        {
+            return null;
+        }
     }
 }
