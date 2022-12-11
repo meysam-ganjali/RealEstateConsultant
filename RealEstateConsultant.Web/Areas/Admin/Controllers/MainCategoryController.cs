@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstateConsultant.Application.UnitOfWorkPattern;
 using RealEstateConsultant.Entities;
+using RealEstateConsultant.Utilities;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace RealEstateConsultant.Web.Areas.Admin.Controllers
@@ -34,7 +35,28 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateParentCategory(MainCategory mainCategory)
         {
-            return null;
+            var files = HttpContext.Request.Form.Files;
+            UploadHelper UploadObj = new UploadHelper(_environment);
+            if (files.Count > 0)
+            {
+            mainCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\main_cat_logo\").FileNameAddress;
+
+            }
+
+            var res = await _handleRepository.MainCategory.Add(mainCategory);
+            await _handleRepository.SaveAsync();
+            if (res.Status)
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Success";
+                return Redirect("/Admin/MainCategory/Index");
+            }
+            else
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Error";
+                return Redirect("/Admin/MainCategory/Index");
+            }
         }
     }
 }

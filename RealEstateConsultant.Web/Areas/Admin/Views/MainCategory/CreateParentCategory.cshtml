@@ -17,19 +17,19 @@
                 <div class="form-group row">
                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">لوگو(اختیاری)</label>
                     <div class="col-sm-9">
-                        <input type="file" class="form-control">
+                        <input type ="file" name="files" class="form-control">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">ترتیب نمایش</label>
                     <div class="col-sm-9">
-                        <input id="demo3" type="text" value="-1" name="demo3" asp-for="DisplayOrder">
+                        <input id="demo3" type="text" value="-1"  asp-for="DisplayOrder">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
                     <div class="col-sm-9">
-                        <textarea id="mymce" name="area" asp-for="Decription"></textarea>
+                        <textarea id="mymce" asp-for="Decription"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -70,7 +70,7 @@
             }
         });
 
-        $("input[name='demo3']").TouchSpin();
+        $("input[id='demo3']").TouchSpin();
 
     </script>
 }
