@@ -259,7 +259,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Entities\\RealEstateConsultant.Entities.csproj": {
+                "projectPath": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Entities\\RealEstateConsultant.Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -1,9 +1,18 @@
-﻿@model IEnumerable<RealEstateConsultant.Entities.MainCategory>
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model RealEstateConsultant.Utilities.ViewModels.CategoryVM
 <partial name="_ToastMessage" />
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-5 align-self-center">
-            <h5 class="page-title h6">لیست دسته بندی ها</h5>
+            @if (ViewBag.ParentCategoryId != null)
+            {
+                <h5 class="page-title h6">لیست دسته بندی فرزند</h5>
+            }
+            else
+            {
+                <h5 class="page-title h6">لیست دسته بندی ها</h5>
+            }
+
         </div>
         <div class="col-7 align-self-center">
             <div class="d-flex align-items-center justify-content-end">
@@ -25,31 +34,29 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <a class="btn waves-effect waves-light btn-block btn-success text-white" href="/Admin/MainCategory/CreateParentCategory"><i class="fa fa-plus"></i>&nbsp; افزودن دسته بندی پدر</a>
+                    @if (ViewBag.ParentCategoryId == null || ViewBag.ParentCategoryId < 1)
+                    {
+                        <a class="btn waves-effect waves-light btn-block btn-success text-white" href="/Admin/MainCategory/CreateParentCategory"><i class="fa fa-plus"></i>&nbsp; افزودن دسته بندی پدر</a>
+                    }
+
                 </div>
 
 
                 <div class="table-responsive">
-                    <table id="zero_config" class="table table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th>لوگو</th>
-                                <th>عنوان دسته بندی</th>
-                                <th>ترتیب نمایش</th>
-                                <th>تعداد زیر دسته ها</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model.Count() < 1)
-                            {
+                    @if (ViewBag.ParentCategoryId != null)
+                    {
+                        <table id="zero_config" class="table table-hover table-bordered">
+                            <thead>
                                 <tr>
-                                    <td colspan="5">دسته بندی یافت نشد ابتدا یک دسته ثبت کنید</td>
+                                    <th>لوگو</th>
+                                    <th>عنوان دسته بندی</th>
+                                    <th>ترتیب نمایش</th>
+                                    <th>Action</th>
                                 </tr>
-                            }
-                            else
-                            {
-                                foreach (var cat in Model.ToList())
+                            </thead>
+                            <tbody>
+
+                                @foreach (var cat in Model.ChialdCatLst.ToList())
                                 {
                                     <tr>
                                         @if (!string.IsNullOrWhiteSpace(cat.LogoPath))
@@ -67,32 +74,87 @@
                                         <td>@cat.Name</td>
                                         <td>@cat.DisplayOrder</td>
                                         <td>
-                                            @cat.ChildCategories.Count()
-                                        </td>
-                                        <td>
                                             <div class="btn-group-sm">
-                                                <a onclick="ShowModalEditMainCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                                <a onclick="ShowModalEditChaildCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
                                                     <span class="btn-label"><i class="fa fa-edit"></i></span>
                                                 </a>
-                                                @if (cat.ChildCategories.Count > 0)
-                                                {
-                                                    <a class="btn btn-sm btn-info waves-effect waves-light text-white">
-                                                        <span class="btn-label"><i class="fa fa-eye"></i></span> زیر دسته ها
-                                                    </a>
-                                                }
-                                                <button onclick="ShowModalAddChiald('@cat.Id')" class="btn btn-sm btn-success waves-effect waves-light text-dark">
-                                                    <span class="btn-label"><i class="fa fa-plus"></i></span> افزودن زیردسته
-                                                </button>
-                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveCategory('@cat.Id','@cat.Name')">
+                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveChialdCategory('@cat.Id','@cat.Name')">
                                                     <span class="btn-label"><i class="fa fa-trash"></i></span>
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
                                 }
-                            }
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <table id="zero_config" class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>لوگو</th>
+                                    <th>عنوان دسته بندی</th>
+                                    <th>ترتیب نمایش</th>
+                                    <th>تعداد زیر دسته ها</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (false)
+                                {
+                                    <tr>
+                                        <td colspan="5">دسته بندی یافت نشد ابتدا یک دسته ثبت کنید</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    foreach (var cat in Model.MainCatLst.ToList())
+                                    {
+                                        <tr>
+                                            @if (!string.IsNullOrWhiteSpace(cat.LogoPath))
+                                            {
+                                                <td>
+                                                    <img src="~/@cat.LogoPath" width="42" height="42" />
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    <img src="~/no-image.png" width="42" height="42" />
+                                                </td>
+                                            }
+                                            <td>@cat.Name</td>
+                                            <td>@cat.DisplayOrder</td>
+                                            <td>
+                                                @cat.ChildCategories.Count()
+                                            </td>
+                                            <td>
+                                                <div class="btn-group-sm">
+                                                    <a onclick="ShowModalEditMainCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                                        <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                                    </a>
+                                                    @if (cat.ChildCategories.Count > 0)
+                                                    {
+                                                        <a href="/Admin/MainCategory/Index/@cat.Id" class="btn btn-sm btn-info waves-effect waves-light text-white">
+                                                            <span class="btn-label"><i class="fa fa-eye"></i></span> زیر دسته ها
+                                                        </a>
+                                                    }
+                                                    <button onclick="ShowModalAddChiald('@cat.Id')" class="btn btn-sm btn-success waves-effect waves-light text-dark">
+                                                        <span class="btn-label"><i class="fa fa-plus"></i></span> افزودن زیردسته
+                                                    </button>
+                                                    <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveCategory('@cat.Id','@cat.Name')">
+                                                        <span class="btn-label"><i class="fa fa-trash"></i></span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    }
+
                 </div>
             </div>
         </div>
@@ -103,7 +165,7 @@
     <script src="~/adminassets/Sweetalert2/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="~/adminassets/Sweetalert2/sweetalert2.min.css" />
     <script src="~/adminassets/dist/js/pages/datatable/datatable-basic.init.js"></script>
-   
+
     <script>
         function ShowModalAddChiald(parentId) {
             $('#Parent_Id').val(parentId);
@@ -128,12 +190,12 @@
                 });
             }
         });
-        function ShowModalEditMainCategory(Id,Name,DisplayOrder,Description) {
+        function ShowModalEditMainCategory(Id, Name, DisplayOrder, Description) {
             $('#Edit_Cat_Id').val(Id);
             $('#Edit_Cat_Name').val(Name);
             $('#Edit_Cat_DisplayOrder').val(DisplayOrder);
             $('#Edit_Cat_Description').html(Description);
-     
+
 
             $('#UpdateParentCategory').modal('show');
         }
@@ -212,65 +274,65 @@
 }
     @section Modals
     {
-        <div class="modal" id="AddChiald" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-warning">
-                        <h5 class="modal-title">اضافه کردن فرزند  <strong id="ProductName_Color"></strong></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="x_content">
-                            <hr />
-                            <form class="form-horizontal" method="post" action="/Admin/MainCategory/CreateChialdCategory" enctype="multipart/form-data">
-                                <input type="hidden" name="MainCategoryId" id="Parent_Id" />
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان دسته بندی</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="Name">
-                                            <span class="trxt-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">لوگو(اختیاری)</label>
-                                        <div class="col-sm-9">
-                                            <input type="file" name="files" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">ترتیب نمایش</label>
-                                        <div class="col-sm-9">
-                                            <input id="displayOrder" type="number" name="DisplayOrder" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
-                                        <div class="col-sm-9">
-                                        <textarea id="mymce" name="Decription"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-
-                                        <div for="email1" class="col-sm-3 text-right">
-                                            <button type="submit" class="btn btn-success text-white"><i class="fa fa-plus"></i>&nbsp; تکمیل عملیات</button>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i>&nbsp; بازگشت به لیست</button>
-                                        </div>
+    <div class="modal" id="AddChiald" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">اضافه کردن فرزند  <strong id="ProductName_Color"></strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="x_content">
+                        <hr />
+                        <form class="form-horizontal" method="post" action="/Admin/MainCategory/CreateChialdCategory" enctype="multipart/form-data">
+                            <input type="hidden" name="MainCategoryId" id="Parent_Id" />
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان دسته بندی</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Name">
+                                        <span class="trxt-danger"></span>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">لوگو(اختیاری)</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="files" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">ترتیب نمایش</label>
+                                    <div class="col-sm-9">
+                                        <input id="displayOrder" type="number" name="DisplayOrder" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
+                                    <div class="col-sm-9">
+                                        <textarea id="mymce" name="Decription"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
 
+                                    <div for="email1" class="col-sm-3 text-right">
+                                        <button type="submit" class="btn btn-success text-white"><i class="fa fa-plus"></i>&nbsp; تکمیل عملیات</button>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i>&nbsp; بازگشت به لیست</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="modal-footer">
-                    </div>
+
+                </div>
+                <div class="modal-footer">
                 </div>
             </div>
         </div>
+    </div>
 
     <div class="modal" id="UpdateParentCategory" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">

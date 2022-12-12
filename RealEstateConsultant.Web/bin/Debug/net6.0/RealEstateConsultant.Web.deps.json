@@ -2377,7 +2377,8 @@
       },
       "RealEstateConsultant.Utilities/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0"
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "RealEstateConsultant.Entities": "1.0.0"
         },
         "runtime": {
           "RealEstateConsultant.Utilities.dll": {}

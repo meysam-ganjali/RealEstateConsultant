@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstateConsultant.Entities\RealEstateConsultant.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

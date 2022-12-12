@@ -10,3 +10,6 @@ E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\ob
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\obj\Debug\net6.0\refint\RealEstateConsultant.Utilities.dll
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\obj\Debug\net6.0\RealEstateConsultant.Utilities.pdb
 E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\obj\Debug\net6.0\ref\RealEstateConsultant.Utilities.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\bin\Debug\net6.0\RealEstateConsultant.Entities.dll
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\bin\Debug\net6.0\RealEstateConsultant.Entities.pdb
+E:\Programing\Project\Web\RealEstateConsultant\RealEstateConsultant.Utilities\obj\Debug\net6.0\RealEstateConsultant.Utilities.csproj.CopyComplete

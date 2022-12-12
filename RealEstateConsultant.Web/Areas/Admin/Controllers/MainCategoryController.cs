@@ -2,6 +2,7 @@
 using RealEstateConsultant.Application.UnitOfWorkPattern;
 using RealEstateConsultant.Entities;
 using RealEstateConsultant.Utilities;
+using RealEstateConsultant.Utilities.ViewModels;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace RealEstateConsultant.Web.Areas.Admin.Controllers
@@ -27,10 +28,22 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
 
         #region Get Action
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var res = await _handleRepository.MainCategory.GetAll(includeProperties: "ChildCategories");
-            return View(res);
+            ViewBag.ParentCategoryId = id;
+            CategoryVM categories = new CategoryVM();
+            if (id != null)
+            {
+                categories.ChialdCatLst =
+                    await _handleRepository.ChialdCategory.GetAll(filter: c => c.MainCategoryId.Equals(id), includeProperties: "MainCategory");
+                return View(categories);
+            }
+            else
+            {
+                categories.MainCatLst = await _handleRepository.MainCategory.GetAll(includeProperties: "ChildCategories");
+                return View(categories);
+            }
+
         }
 
         [HttpGet]

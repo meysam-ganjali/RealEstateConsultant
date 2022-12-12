@@ -3763,7 +3763,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0"
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "RealEstateConsultant.Entities": "1.0.0"
         },
         "compile": {
           "bin/placeholder/RealEstateConsultant.Utilities.dll": {}
