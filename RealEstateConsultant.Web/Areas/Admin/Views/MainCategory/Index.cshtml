@@ -6,7 +6,7 @@
         <div class="col-5 align-self-center">
             @if (ViewBag.ParentCategoryId != null)
             {
-                <h5 class="page-title h6">لیست دسته بندی فرزند</h5>
+                <h5 class="page-title h6">لیست زیر دسته های مربوط به @Model.ChialdCatLst.FirstOrDefault().MainCategory.Name</h5>
             }
             else
             {
@@ -190,6 +190,7 @@
                 });
             }
         });
+
         function ShowModalEditMainCategory(Id, Name, DisplayOrder, Description) {
             $('#Edit_Cat_Id').val(Id);
             $('#Edit_Cat_Name').val(Name);
@@ -199,7 +200,6 @@
 
             $('#UpdateParentCategory').modal('show');
         }
-
 
         function RemoveCategory(id, title) {
             swal.fire({
