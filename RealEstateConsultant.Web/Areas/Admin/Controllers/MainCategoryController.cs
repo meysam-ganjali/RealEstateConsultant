@@ -79,6 +79,15 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             {
                 return Json(new { message = "دسته بندی یافت نشد" });
             }
+
+            if (!string.IsNullOrWhiteSpace(cat.LogoPath))
+            {
+                var oldImagePath = Path.Combine(_environment.WebRootPath, cat.LogoPath.TrimStart('\\'));
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
             var res = await _handleRepository.MainCategory.Remove(cat);
             _handleRepository.SaveAsync();
             return Json(res);
