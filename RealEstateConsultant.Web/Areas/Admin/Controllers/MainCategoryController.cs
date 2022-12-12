@@ -106,6 +106,7 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             return Json(res);
         }
 
+
         [HttpPost]
         public async Task<IActionResult> UpdateParentCategory(MainCategory mainCategory)
         {
@@ -162,7 +163,7 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             UploadHelper UploadObj = new UploadHelper(_environment);
             if (files.Count > 0)
             {
-                childCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\main_cat_logo\").FileNameAddress;
+                childCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\child_cat_logo\").FileNameAddress;
 
             }
 
@@ -182,7 +183,62 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteChildCategory(int id)
+        {
+            var cat = await _handleRepository.ChialdCategory.GetFirstOrDefault(filter: u => u.Id.Equals(id));
+            if (cat == null)
+            {
+                return Json(new { message = "دسته بندی یافت نشد" });
+            }
 
+            if (!string.IsNullOrWhiteSpace(cat.LogoPath))
+            {
+                var oldImagePath = Path.Combine(_environment.WebRootPath, cat.LogoPath.TrimStart('\\'));
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
+            var res = await _handleRepository.ChialdCategory.Remove(cat);
+            _handleRepository.SaveAsync();
+            return Json(res);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateChildCategory(ChildCategory childCategory)
+        {
+            var CatFromDb = await _handleRepository.ChialdCategory.GetFirstOrDefault(u => u.Id == childCategory.Id);
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count > 0)
+            {
+                if (!string.IsNullOrWhiteSpace(CatFromDb.LogoPath))
+                {
+                    var oldImagePath = Path.Combine(_environment.WebRootPath, CatFromDb.LogoPath.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+                UploadHelper UploadObj = new UploadHelper(_environment);
+                childCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\child_cat_logo\").FileNameAddress;
+            }
+
+            var res = await _handleRepository.ChialdCategory.UpdateChialdCategoryAsync(childCategory);
+            await _handleRepository.SaveAsync();
+            if (res.Status)
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Success";
+                return Redirect("/Admin/MainCategory/Index/"+ childCategory.MainCategoryId);
+            }
+            else
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Error";
+                return Redirect($"/Admin/MainCategory/Index/"+ childCategory.MainCategoryId);
+            }
+        }
         #endregion
 
         #endregion

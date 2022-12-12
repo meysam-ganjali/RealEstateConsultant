@@ -75,10 +75,10 @@
                                         <td>@cat.DisplayOrder</td>
                                         <td>
                                             <div class="btn-group-sm">
-                                                <a onclick="ShowModalEditChaildCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                                <a onclick="ShowModalEditChaildCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription','@cat.MainCategoryId')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
                                                     <span class="btn-label"><i class="fa fa-edit"></i></span>
                                                 </a>
-                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveChialdCategory('@cat.Id','@cat.Name')">
+                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveChildCategory('@cat.Id','@cat.Name')">
                                                     <span class="btn-label"><i class="fa fa-trash"></i></span>
                                                 </a>
                                             </div>
@@ -131,7 +131,9 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group-sm">
-                                                    <a onclick="ShowModalEditMainCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                                    <a 
+                                                        onclick="ShowModalEditMainCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" 
+                                                        class="btn btn-sm btn-primary waves-effect waves-light text-white">
                                                         <span class="btn-label"><i class="fa fa-edit"></i></span>
                                                     </a>
                                                     @if (cat.ChildCategories.Count > 0)
@@ -172,7 +174,6 @@
             $('#AddChiald').modal('show');
         }
 
-
         $(document).ready(function () {
 
             if ($("#Edit_Cat_Description").length > 0) {
@@ -196,9 +197,16 @@
             $('#Edit_Cat_Name').val(Name);
             $('#Edit_Cat_DisplayOrder').val(DisplayOrder);
             $('#Edit_Cat_Description').html(Description);
-
-
             $('#UpdateParentCategory').modal('show');
+        }
+
+        function ShowModalEditChaildCategory(Id, Name, DisplayOrder, Description,Parent) {
+            $('#Edit_Child_Cat_Id').val(Id);
+            $('#Edit_Child_Cat_Name').val(Name);
+            $('#Edit_Child_Cat_DisplayOrder').val(DisplayOrder);
+            $('#MainCatId').val(Parent);
+            $('#Edit_Child_Cat_Description').html(Description);
+            $('#UpdateChildCategory').modal('show');
         }
 
         function RemoveCategory(id, title) {
@@ -253,6 +261,58 @@
             });
         }
 
+        function RemoveChildCategory(id, title) {
+            swal.fire({
+                title: 'حذف دسته بندی' + '  ' + title,
+                text: "کاربر گرامی  مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#7cacbe',
+                confirmButtonText: 'بله ',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+
+                    var postData = {
+                        'id': id
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "/Admin/MainCategory/DeleteChildCategory/",
+                        data: postData,
+                        success: function (data) {
+                            if (data.status == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+                            } else {
+
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            });
+        }
+
         $(document).ready(function () {
 
             if ($("#mymce").length > 0) {
@@ -270,7 +330,7 @@
                 });
             }
         });
-    </script>
+    </script> 
 }
     @section Modals
     {
@@ -372,6 +432,67 @@
                                     <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
                                     <div class="col-sm-9">
                                         <textarea id="Edit_Cat_Description" class="find" name="Decription"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+
+                                    <div for="email1" class="col-sm-3 text-right">
+                                        <button type="submit" class="btn btn-success text-white"><i class="fa fa-plus"></i>&nbsp; تکمیل عملیات</button>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i>&nbsp; بازگشت به لیست</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="UpdateChildCategory" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">ویرایش دسته بندی <strong id="ProductName_Color"></strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="x_content">
+                        <hr />
+                        <form class="form-horizontal" method="post" action="/Admin/MainCategory/UpdateChildCategory" enctype="multipart/form-data">
+                            <input type="hidden" name="Id" id="Edit_Child_Cat_Id" />
+                            <input type="hidden" id="MainCatId" name="MainCategoryId" />
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان دسته بندی</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Name" id="Edit_Child_Cat_Name">
+                                        <span class="trxt-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">لوگو(اختیاری)</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="files" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">ترتیب نمایش</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" name="DisplayOrder" id="Edit_Child_Cat_DisplayOrder" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
+                                    <div class="col-sm-9">
+                                        <textarea id="Edit_Child_Cat_Description" class="find" name="Decription"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
