@@ -71,7 +71,7 @@
                                         </td>
                                         <td>
                                             <div class="btn-group-sm">
-                                                <a class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                                <a onclick="ShowModalEditMainCategory('@cat.Id','@cat.Name','@cat.DisplayOrder','@cat.Decription')" class="btn btn-sm btn-primary waves-effect waves-light text-white">
                                                     <span class="btn-label"><i class="fa fa-edit"></i></span>
                                                 </a>
                                                 @if (cat.ChildCategories.Count > 0)
@@ -106,9 +106,38 @@
    
     <script>
         function ShowModalAddChiald(parentId) {
-            $('#Parent_Id').val(parentId)
+            $('#Parent_Id').val(parentId);
             $('#AddChiald').modal('show');
         }
+
+
+        $(document).ready(function () {
+
+            if ($("#Edit_Cat_Description").length > 0) {
+                tinymce.init({
+                    selector: "textarea#Edit_Cat_Description",
+                    theme: "modern",
+                    height: 150,
+                    plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor"
+                    ],
+                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+                });
+            }
+        });
+        function ShowModalEditMainCategory(Id,Name,DisplayOrder,Description) {
+            $('#Edit_Cat_Id').val(Id);
+            $('#Edit_Cat_Name').val(Name);
+            $('#Edit_Cat_DisplayOrder').val(DisplayOrder);
+            $('#Edit_Cat_Description').html(Description);
+     
+
+            $('#UpdateParentCategory').modal('show');
+        }
+
 
         function RemoveCategory(id, title) {
             swal.fire({
@@ -183,11 +212,71 @@
 }
     @section Modals
     {
-    <div class="modal" id="AddChiald" tabindex="-1" role="dialog">
+        <div class="modal" id="AddChiald" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <h5 class="modal-title">اضافه کردن فرزند  <strong id="ProductName_Color"></strong></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="x_content">
+                            <hr />
+                            <form class="form-horizontal" method="post" action="/Admin/MainCategory/CreateChialdCategory" enctype="multipart/form-data">
+                                <input type="hidden" name="MainCategoryId" id="Parent_Id" />
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان دسته بندی</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="Name">
+                                            <span class="trxt-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">لوگو(اختیاری)</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="files" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">ترتیب نمایش</label>
+                                        <div class="col-sm-9">
+                                            <input id="displayOrder" type="number" name="DisplayOrder" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
+                                        <div class="col-sm-9">
+                                        <textarea id="mymce" name="Decription"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <div for="email1" class="col-sm-3 text-right">
+                                            <button type="submit" class="btn btn-success text-white"><i class="fa fa-plus"></i>&nbsp; تکمیل عملیات</button>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i>&nbsp; بازگشت به لیست</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="modal" id="UpdateParentCategory" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-warning">
-                    <h5 class="modal-title">اضافه کردن رنگ برای محصول <strong id="ProductName_Color"></strong></h5>
+                    <h5 class="modal-title">ویرایش دسته بندی <strong id="ProductName_Color"></strong></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -195,13 +284,13 @@
                 <div class="modal-body">
                     <div class="x_content">
                         <hr />
-                        <form class="form-horizontal" method="post" action="/Admin/MainCategory/CreateChialdCategory" enctype="multipart/form-data">
-                            <input type="hidden" name="MainCategoryId" id="Parent_Id" />
+                        <form class="form-horizontal" method="post" action="/Admin/MainCategory/UpdateParentCategory" enctype="multipart/form-data">
+                            <input type="hidden" name="Id" id="Edit_Cat_Id" />
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان دسته بندی</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="Name">
+                                        <input type="text" class="form-control" name="Name" id="Edit_Cat_Name">
                                         <span class="trxt-danger"></span>
                                     </div>
                                 </div>
@@ -214,13 +303,13 @@
                                 <div class="form-group row">
                                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">ترتیب نمایش</label>
                                     <div class="col-sm-9">
-                                        <input id="displayOrder" type="number" name="DisplayOrder" class="form-control">
+                                        <input type="number" name="DisplayOrder" id="Edit_Cat_DisplayOrder" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
                                     <div class="col-sm-9">
-                                        <textarea id="mymce" name="Decription"></textarea>
+                                        <textarea id="Edit_Cat_Description" class="find" name="Decription"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -242,5 +331,5 @@
             </div>
         </div>
     </div>
-}
+    }
 

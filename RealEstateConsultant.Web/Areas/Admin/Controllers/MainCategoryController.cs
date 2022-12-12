@@ -92,6 +92,41 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
             _handleRepository.SaveAsync();
             return Json(res);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateParentCategory(MainCategory mainCategory)
+        {
+            var CatFromDb = await _handleRepository.MainCategory.GetFirstOrDefault(u => u.Id == mainCategory.Id);
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count > 0)
+            {
+                if (!string.IsNullOrWhiteSpace(CatFromDb.LogoPath))
+                {
+                    var oldImagePath = Path.Combine(_environment.WebRootPath, CatFromDb.LogoPath.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+                UploadHelper UploadObj = new UploadHelper(_environment);
+                mainCategory.LogoPath = UploadObj.UploadFile(files[0], $@"images\main_cat_logo\").FileNameAddress;
+            }
+
+            var res = await _handleRepository.MainCategory.UpdateMainCategoryAsync(mainCategory);
+            await _handleRepository.SaveAsync();
+            if (res.Status)
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Success";
+                return Redirect("/Admin/MainCategory/Index");
+            }
+            else
+            {
+                TempData["Message"] = res.Message;
+                TempData["MessageType"] = "Error";
+                return Redirect("/Admin/MainCategory/Index");
+            }
+        }
         #endregion
 
 
