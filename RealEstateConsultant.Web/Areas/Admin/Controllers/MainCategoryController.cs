@@ -22,7 +22,6 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
         }
         #endregion
 
-
         #region Parent Category
 
 
