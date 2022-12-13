@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using RealEstateConsultant.Application.UnitOfWorkPattern;
+using RealEstateConsultant.Utilities;
 using RealEstateConsultant.Web.Data;
 
 #region Variables
@@ -16,9 +18,10 @@ var connectionString = builder.Configuration.GetConnectionString("DataBaseContex
 builder.Services.AddDbContext<DataBaseContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>()
-    .AddEntityFrameworkStores<DataBaseContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<DataBaseContext>().AddDefaultTokenProviders();
+
 builder.Services.AddScoped<IHandleRepository, HandleRepository>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

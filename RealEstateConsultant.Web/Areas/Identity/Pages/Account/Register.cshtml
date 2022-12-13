@@ -3,62 +3,54 @@
 @{
     ViewData["Title"] = "Register";
 }
-
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
+<div class="innerHeading">
+    <div class="container">
+        <h1>ثبت نام</h1>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
+</div>
+
+<div class="innercontent">
+    <div class="container">
+        <div class="card mx-auto loginWrp wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+            <div class="card-body">
+                <h4 class="card-title mb-4">ثبت نام</h4>
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <a href="#" class="btn btn-facebook btn-block mb-2 text-white"> <i class="fab fa-facebook-f"></i> &nbsp; ورود با فیسبوک</a> <a href="#" class="btn btn-primary btn-block google_plus mb-4"> <i class="fab fa-google-plus-g"></i> &nbsp;
+                        ورود با گوگل</a>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Input.FirstName" placeholder="نام " type="text">
                     </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Input.LastName" placeholder=" نام خانوادگی" type="text">
+                    </div>
+                    <!-- form-group// -->
+          
+                    <div class="form-group">
+                        <input class="form-control"  asp-for="Input.Email" placeholder="آدرس ایمیل" type="text">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control"  asp-for="Input.PhoneNumber" placeholder="تلفن همراه" type="text">
+                    </div>
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <input class="form-control"  asp-for="Input.Password" placeholder="کلمه عبور" type="password">
+                    </div>
+                    <!-- form-group// -->
+          
+                    <div class="form-group">
+                        <input class="form-control"  asp-for="Input.ConfirmPassword" placeholder="تکرار کلمه عبور" type="password">
+                    </div>
+                    <!-- form-group// -->
+          
+                    <div class="form-group">
+                        <button type="submit" class="btn login_btn btn-primary btn-block"> ثبت نام </button>
+                    </div>
+                    <!-- form-group// -->
+                </form>
+            </div>
+            <!-- card-body.// --> 
+        </div>
+        <p class="text-center mt-4">قبلاً ثبت نام کردید؟ <a href="#">اکنون وارد شوید</a></p>
     </div>
 </div>
 

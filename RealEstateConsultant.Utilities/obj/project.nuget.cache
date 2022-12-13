@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yiXq+CIjXpQFp3Zgn5nhb0fuuiKkNErK4Q5cp5fViD/zjbi6DF0gfowxMX65t1Fr5h/ODW8/ycsgBj2C2trngQ==",
+  "dgSpecHash": "fvT38ASAqDcibH0LOFVHDhNxMTXPT2LIcHlpOfjaTQY6Mgb9rmBu4DL1myk7qmFjVfYQS/JqN0/6edLTUuDE2g==",
   "success": true,
   "projectFilePath": "E:\\Programing\\Project\\Web\\RealEstateConsultant\\RealEstateConsultant.Utilities\\RealEstateConsultant.Utilities.csproj",
   "expectedPackageFiles": [
@@ -10,11 +10,13 @@
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.10\\microsoft.aspnetcore.identity.ui.6.0.10.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.2.0\\microsoft.extensions.configuration.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\2.2.0\\microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\6.0.10\\microsoft.extensions.fileproviders.embedded.6.0.10.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\2.2.0\\microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.10\\microsoft.extensions.identity.core.6.0.10.nupkg.sha512",
     "C:\\Users\\Meysam\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.10\\microsoft.extensions.identity.stores.6.0.10.nupkg.sha512",
