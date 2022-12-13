@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateConsultant.Application.UnitOfWorkPattern;
 using RealEstateConsultant.Entities;
 using RealEstateConsultant.Utilities;
 using RealEstateConsultant.Utilities.ViewModels;
+using System.Data;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace RealEstateConsultant.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.ManagerRole)]
     public class MainCategoryController : Controller
     {
         #region Ctor
