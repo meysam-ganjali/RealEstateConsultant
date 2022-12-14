@@ -173,12 +173,10 @@ namespace RealEstateConsultant.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -215,12 +213,10 @@ namespace RealEstateConsultant.DataAccess.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -263,6 +259,133 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.HasIndex("MainCategoryId");
 
                     b.ToTable("ChildCategories");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.Housing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FloorNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Metrag")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UnitNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Housings");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingAmount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<long?>("AmountForSell")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HousingId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ImountForDeposit")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ImountForRent")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HousingId");
+
+                    b.ToTable("HousingAmounts");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ChildCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HousingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChildCategoryId");
+
+                    b.HasIndex("HousingId");
+
+                    b.ToTable("HousingCategories");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingProperty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HousingId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LogoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PropertyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PropertyValue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HousingId");
+
+                    b.ToTable("HousingProperties");
                 });
 
             modelBuilder.Entity("RealEstateConsultant.Entities.MainCategory", b =>
@@ -379,6 +502,72 @@ namespace RealEstateConsultant.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("MainCategory");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.Housing", b =>
+                {
+                    b.HasOne("RealEstateConsultant.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingAmount", b =>
+                {
+                    b.HasOne("RealEstateConsultant.Entities.Housing", "Housing")
+                        .WithMany("HousingAmounts")
+                        .HasForeignKey("HousingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Housing");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingCategory", b =>
+                {
+                    b.HasOne("RealEstateConsultant.Entities.ChildCategory", "ChildCategory")
+                        .WithMany("HousingCategories")
+                        .HasForeignKey("ChildCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RealEstateConsultant.Entities.Housing", "Housing")
+                        .WithMany("HousingCategories")
+                        .HasForeignKey("HousingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChildCategory");
+
+                    b.Navigation("Housing");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingProperty", b =>
+                {
+                    b.HasOne("RealEstateConsultant.Entities.Housing", "Housing")
+                        .WithMany("HousingProperties")
+                        .HasForeignKey("HousingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Housing");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.ChildCategory", b =>
+                {
+                    b.Navigation("HousingCategories");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.Housing", b =>
+                {
+                    b.Navigation("HousingAmounts");
+
+                    b.Navigation("HousingCategories");
+
+                    b.Navigation("HousingProperties");
                 });
 
             modelBuilder.Entity("RealEstateConsultant.Entities.MainCategory", b =>

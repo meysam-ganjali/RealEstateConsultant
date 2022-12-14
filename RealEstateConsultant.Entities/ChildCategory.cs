@@ -14,4 +14,5 @@ public class ChildCategory:BaseEntity
     public int MainCategoryId { get; set; }
     [ForeignKey("MainCategoryId")]
     public MainCategory MainCategory { get; set; }
+    public ICollection<HousingCategory> HousingCategories { get; set; }
 }

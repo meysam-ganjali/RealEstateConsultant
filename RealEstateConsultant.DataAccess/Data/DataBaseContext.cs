@@ -15,6 +15,10 @@ public class DataBaseContext : IdentityDbContext<IdentityUser>
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     public DbSet<MainCategory> MainCategories { get; set; }
     public DbSet<ChildCategory> ChildCategories { get; set; }
+    public DbSet<HousingCategory> HousingCategories { get; set; }
+    public DbSet<HousingProperty> HousingProperties { get; set; }
+    public DbSet<HousingAmount> HousingAmounts { get; set; }
+    public DbSet<Housing> Housings { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
