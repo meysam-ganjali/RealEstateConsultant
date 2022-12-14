@@ -1,0 +1,94 @@
+﻿@model IEnumerable<RealEstateConsultant.Entities.Housing>
+<partial name="_ToastMessage" />
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+
+            <h5 class="page-title h6">لیست املاک ثبت شده</h5>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/Admin">خانه</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">لیست املاک</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- basic table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <a class="btn waves-effect waves-light btn-block btn-success text-white" href="/Admin/Housing/CreateHouse"><i class="fa fa-plus"></i>&nbsp; افزودن ملک جدید</a>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table id="zero_config" class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>عنوان ملک</th>
+                                <th>مالک</th>
+                                <th>دسته بندی</th>
+                                <th>متراژ</th>
+                                <th>تاریخ ثبت</th>
+                                <th>آدرس</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ToList().Count < 1)
+                            {
+                                <tr>
+                                    <td colspan="7">ملکی برای نمایش وجود ندارد</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var house in Model.ToList())
+                                {
+                                    <tr>
+                                        <td>@house.Title</td>
+                                        <td>
+                                            @house.ApplicationUser.FirstName @house.ApplicationUser.LastName
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                @foreach (var cat in house.HousingCategories.ToList())
+                                                {
+                                                    <li>@cat.ChildCategory.MainCategory.Name - @cat.ChildCategory.Name</li>
+                                                }
+                                            </ul>
+                                        </td>
+                                        <td>@house.Metrag متر</td>
+                                        <td>@house.CreatedDate</td>
+                                        <td>@house.Address</td>
+                                        <td>
+                                            <div class="btn-group-sm">
+                                                <a onclick="ShowModalEditChaildCategory()" class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                                    <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                                </a>
+                                                <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveChildCategory()">
+                                                    <span class="btn-label"><i class="fa fa-trash"></i></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
