@@ -356,6 +356,41 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.ToTable("HousingCategories");
                 });
 
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AltAttr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HousingId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Width")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("height")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HousingId");
+
+                    b.ToTable("HousingImages");
+                });
+
             modelBuilder.Entity("RealEstateConsultant.Entities.HousingProperty", b =>
                 {
                     b.Property<int>("Id")
@@ -545,6 +580,17 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.Navigation("Housing");
                 });
 
+            modelBuilder.Entity("RealEstateConsultant.Entities.HousingImage", b =>
+                {
+                    b.HasOne("RealEstateConsultant.Entities.Housing", "Housing")
+                        .WithMany("HousingImages")
+                        .HasForeignKey("HousingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Housing");
+                });
+
             modelBuilder.Entity("RealEstateConsultant.Entities.HousingProperty", b =>
                 {
                     b.HasOne("RealEstateConsultant.Entities.Housing", "Housing")
@@ -566,6 +612,8 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.Navigation("HousingAmounts");
 
                     b.Navigation("HousingCategories");
+
+                    b.Navigation("HousingImages");
 
                     b.Navigation("HousingProperties");
                 });

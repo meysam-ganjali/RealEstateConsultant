@@ -18,6 +18,7 @@ public class DataBaseContext : IdentityDbContext<IdentityUser>
     public DbSet<HousingCategory> HousingCategories { get; set; }
     public DbSet<HousingProperty> HousingProperties { get; set; }
     public DbSet<HousingAmount> HousingAmounts { get; set; }
+    public DbSet<HousingImage> HousingImages { get; set; }
     public DbSet<Housing> Housings { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {

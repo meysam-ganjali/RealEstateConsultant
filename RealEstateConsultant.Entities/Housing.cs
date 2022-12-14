@@ -15,4 +15,5 @@ public class Housing:BaseEntity
     public ICollection<HousingCategory> HousingCategories { get; set; }
     public ICollection<HousingProperty> HousingProperties { get; set; }
     public ICollection<HousingAmount> HousingAmounts { get; set; }
+    public ICollection<HousingImage> HousingImages { get; set; }
 }
