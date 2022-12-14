@@ -7,5 +7,6 @@ public interface IHandleRepository:IDisposable
     IApplicationRepository ApplicationUser { get; }
     IMainCategoryRepository MainCategory { get; }
     IChialdCategoryRepository ChialdCategory { get; }
+    IHousingRepository Housing { get; }
     Task SaveAsync();
 }
