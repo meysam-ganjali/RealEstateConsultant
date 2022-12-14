@@ -1,0 +1,91 @@
+﻿@model RealEstateConsultant.Entities.Housing
+<div class="col-12">
+    <div class="card">
+        <div class="card-body bg-primary text-white">
+            <h4 class="card-title">ثبت ملک جدید</h4>
+        </div>
+        <hr>
+        <form class="form-horizontal" method="post" action="/Admin/Housing/CreateHouse">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان ملک</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="Title">
+                        <span class="trxt-danger" asp-validation-for="Title"></span>
+                    </div>
+                </div>
+               
+                <div class="form-group row">
+                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label">آدرس</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" asp-for="Address"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">شماره واحد</label>
+                    <div class="col-sm-9">
+                        <input id="demo4" type="text" value="-1" asp-for="UnitNumber">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">شماره طبقه</label>
+                    <div class="col-sm-9">
+                        <input id="demo5" type="text" value="-1" asp-for="FloorNumber">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">متراژ</label>
+                    <div class="col-sm-9">
+                        <input id="demo3" type="text" value="-1" asp-for="Metrag">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label">توضیحات (اختیاری)</label>
+                    <div class="col-sm-9">
+                        <textarea id="mymce" asp-for="Description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <div for="email1" class="col-sm-3 text-right">
+                        <button type="submit" class="btn btn-success text-white"><i class="fa fa-plus"></i>&nbsp; تکمیل عملیات</button>
+                    </div>
+                    <div class="col-sm-9">
+                        <a href="/Admin/MainCategory/index" class="btn btn-secondary text-white"><i class="fa fa-arrow-left"></i>&nbsp; بازگشت به لیست</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            if ($("#mymce").length > 0) {
+                tinymce.init({
+                    selector: "textarea#mymce",
+                    theme: "modern",
+                    height: 300,
+                    plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor"
+                    ],
+                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+                });
+            }
+        });
+
+        $("input[id='demo3']").TouchSpin();
+        $("input[id='demo4']").TouchSpin();
+        $("input[id='demo5']").TouchSpin();
+
+
+    </script>
+}
+

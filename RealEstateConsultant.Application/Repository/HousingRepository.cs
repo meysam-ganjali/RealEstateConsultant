@@ -29,6 +29,7 @@ public class HousingRepository:Repository<Housing>,IHousingRepository
         HousingFromDb.FloorNumber=housing.FloorNumber;
         HousingFromDb.UnitNumber=housing.UnitNumber;
         HousingFromDb.Metrag=housing.Metrag;
+        HousingFromDb.Description=housing.Description;
         return new ResultDto()
         {
             Status = true,

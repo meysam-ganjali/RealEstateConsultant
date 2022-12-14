@@ -280,6 +280,10 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("FloorNumber")
                         .HasColumnType("int");
 

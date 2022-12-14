@@ -9,6 +9,7 @@ public class Housing:BaseEntity
     public int UnitNumber { get; set; }
     public int FloorNumber { get; set; }
     public int Metrag { get; set; }
+    public string Description { get; set; }
     public string ApplicationUserId { get; set; }
     [ForeignKey("ApplicationUserId")]
     public ApplicationUser ApplicationUser { get; set; }
