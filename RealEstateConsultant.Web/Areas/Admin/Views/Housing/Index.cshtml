@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RealEstateConsultant.Entities.Housing>
+﻿@using RealEstateConsultant.Utilities
+@model IEnumerable<RealEstateConsultant.Entities.Housing>
 <partial name="_ToastMessage" />
 <div class="page-breadcrumb">
     <div class="row">
@@ -68,7 +69,7 @@
                                             </ul>
                                         </td>
                                         <td>@house.Metrag متر</td>
-                                        <td>@house.CreatedDate</td>
+                                        <td>@house.CreatedDate.ToPersianDate()</td>
                                         <td>@house.Address</td>
                                         <td>
                                             <div class="btn-group-sm">
