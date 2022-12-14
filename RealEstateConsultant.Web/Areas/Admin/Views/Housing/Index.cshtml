@@ -24,14 +24,14 @@
 <!-- basic table -->
 <div class="row">
     <div class="col-12">
-        <div class="card">
+        <div class="card" >
             <div class="card-body">
                 <div class="card-title">
                     <a class="btn waves-effect waves-light btn-block btn-success text-white" href="/Admin/Housing/CreateHouse"><i class="fa fa-plus"></i>&nbsp; افزودن ملک جدید</a>
                 </div>
 
 
-                <div class="table-responsive">
+                <div>
                     <table id="zero_config" class="table table-hover table-bordered">
                         <thead>
                             <tr>
@@ -76,9 +76,22 @@
                                                 <a onclick="ShowModalEditChaildCategory()" class="btn btn-sm btn-primary waves-effect waves-light text-white">
                                                     <span class="btn-label"><i class="fa fa-edit"></i></span>
                                                 </a>
+                                                <a onclick="ShowModalEditChaildCategory()" class="btn btn-sm btn-info waves-effect waves-light text-white">
+                                                    <span class="btn-label"><i class="fa fa-eye"></i>&nbsp;جزئیات</span>
+                                                </a>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        افزودن
+                                                    </button>
+                                                    <div class="dropdown-menu animated rubberBand" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -2px, 0px);">
+                                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-list"></i>&nbsp;مشخصات</a>
+                                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-image"></i>&nbsp;تصویر</a>
+                                                    </div>
+                                                </div>
                                                 <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveChildCategory()">
                                                     <span class="btn-label"><i class="fa fa-trash"></i></span>
                                                 </a>
+                                               
                                             </div>
                                         </td>
                                     </tr>
