@@ -475,7 +475,7 @@ namespace RealEstateConsultant.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Property");
+                    b.ToTable("Properties");
                 });
 
             modelBuilder.Entity("RealEstateConsultant.Entities.ApplicationUser", b =>

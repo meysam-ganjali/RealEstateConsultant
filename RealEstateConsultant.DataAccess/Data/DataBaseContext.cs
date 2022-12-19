@@ -20,6 +20,7 @@ public class DataBaseContext : IdentityDbContext<IdentityUser>
     public DbSet<HousingAmount> HousingAmounts { get; set; }
     public DbSet<HousingImage> HousingImages { get; set; }
     public DbSet<Housing> Housings { get; set; }
+    public DbSet<Property> Properties { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
