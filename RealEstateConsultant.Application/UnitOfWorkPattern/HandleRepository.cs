@@ -15,12 +15,14 @@ public class HandleRepository: IHandleRepository
         MainCategory = new MainCategoryRepository(_db);
         ChialdCategory = new ChialdCategoryRepository(_db);
         Housing = new HousingRepository(_db);
+        PropertyFeature = new PropertyRepository(_db);
     }
 
     public IApplicationRepository ApplicationUser { get; private set; }
     public IMainCategoryRepository MainCategory { get; private set; }
     public IChialdCategoryRepository ChialdCategory { get; private set; }
     public IHousingRepository Housing { get;private  set; }
+    public IPropertyRepository PropertyFeature { get; set; }
     public async Task SaveAsync()
     {
         await _db.SaveChangesAsync();

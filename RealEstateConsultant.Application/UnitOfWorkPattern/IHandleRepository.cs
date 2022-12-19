@@ -8,5 +8,6 @@ public interface IHandleRepository:IDisposable
     IMainCategoryRepository MainCategory { get; }
     IChialdCategoryRepository ChialdCategory { get; }
     IHousingRepository Housing { get; }
+    IPropertyRepository PropertyFeature { get; }
     Task SaveAsync();
 }
