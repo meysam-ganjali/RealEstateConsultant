@@ -409,20 +409,14 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.Property<int>("HousingId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LogoPath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PropertyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PropertyValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PropertyId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("HousingId");
+
+                    b.HasIndex("PropertyId");
 
                     b.ToTable("HousingProperties");
                 });
@@ -455,6 +449,33 @@ namespace RealEstateConsultant.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MainCategories");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.Property", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LogoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Property");
                 });
 
             modelBuilder.Entity("RealEstateConsultant.Entities.ApplicationUser", b =>
@@ -603,7 +624,15 @@ namespace RealEstateConsultant.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RealEstateConsultant.Entities.Property", "Property")
+                        .WithMany("HousingProperties")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Housing");
+
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("RealEstateConsultant.Entities.ChildCategory", b =>
@@ -625,6 +654,11 @@ namespace RealEstateConsultant.DataAccess.Migrations
             modelBuilder.Entity("RealEstateConsultant.Entities.MainCategory", b =>
                 {
                     b.Navigation("ChildCategories");
+                });
+
+            modelBuilder.Entity("RealEstateConsultant.Entities.Property", b =>
+                {
+                    b.Navigation("HousingProperties");
                 });
 #pragma warning restore 612, 618
         }
