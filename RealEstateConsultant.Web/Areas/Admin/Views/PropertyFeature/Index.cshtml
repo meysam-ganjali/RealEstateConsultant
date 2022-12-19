@@ -1,0 +1,186 @@
+﻿@model IEnumerable<RealEstateConsultant.Entities.Property>
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            <h5 class="page-title h6">لیست مشخصه ها</h5>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/Admin">خانه</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">لیست مشخصه ها</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- basic table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <a onclick="ShowModalAddProperty()" class="btn waves-effect waves-light btn-block btn-success text-white"><i class="fa fa-plus"></i>&nbsp; افزودن مشخصه</a>
+                </div>
+                <div class="table-responsive">
+                   
+                    <table id="zero_config" class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>لوگو</th>
+                            <th>عنوان مشخصه</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach (var prop in Model.ToList())
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/@prop.LogoPath" width="42" height="42"/>
+                                </td>
+                                <td>@prop.Title</td>
+                                        
+                                <td>
+                                    <div class="btn-group-sm">
+                                        <a onclick="ShowModalEditProperty()" class="btn btn-sm btn-primary waves-effect waves-light text-white">
+                                            <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger waves-effect waves-light text-white" onclick="RemoveProperty('@prop.Id','@prop.Title')">
+                                            <span class="btn-label"><i class="fa fa-trash"></i></span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+    {
+    <script src="~/adminassets/Sweetalert2/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="~/adminassets/Sweetalert2/sweetalert2.min.css" />
+    <script src="~/adminassets/dist/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        function ShowModalAddProperty() {
+           // $('#Parent_Id').val(parentId);
+            $('#AddProperty').modal('show');
+        }
+
+        function RemoveCategory(id, title) {
+            swal.fire({
+                title: 'حذف دسته بندی' + '  ' + title,
+                text: "کاربر گرامی  مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#7cacbe',
+                confirmButtonText: 'بله ',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+
+                    var postData = {
+                        'id': id
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "/Admin/MainCategory/DeleteMainCategory/",
+                        data: postData,
+                        success: function (data) {
+                            if (data.status == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+                            } else {
+
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            });
+        }
+
+    </script>
+}
+    @section Modals
+    {
+    <div class="modal" id="AddProperty" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">اضافه مشخصه  <strong id="ProductName_Color"></strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="x_content">
+                        <hr />
+                        <form class="form-horizontal" method="post" action="/Admin/PropertyFeature/CreateProperty" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">عنوان مشخصه</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Title">
+                                        <span class="trxt-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">لوگو(اختیاری)</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="files" class="form-control">
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+
+                                    <div class="col-6 text-right">
+                                        <button type="submit" class="btn btn-success text-white "><i class="fa fa-plus"></i>&nbsp; تکمیل عملیات</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i>&nbsp; بازگشت به لیست</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
