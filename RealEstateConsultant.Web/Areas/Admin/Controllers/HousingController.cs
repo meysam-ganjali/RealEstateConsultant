@@ -29,8 +29,9 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
 
         #region Get
 
-          public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
+            ViewBag.HouseFeature = new SelectList(await _handleRepository.PropertyFeature.GetAll(), "Id", "Title");
             var model = await _handleRepository.Housing.GetAll(
                 includeProperties: "ApplicationUser,HousingCategories,HousingProperties,HousingAmounts,HousingImages,HousingCategories.ChildCategory.MainCategory");
             return View(model);
@@ -39,7 +40,7 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateHouse()
         {
-          
+            ViewBag.Property = new SelectList(await _handleRepository.PropertyFeature.GetAll(), "Id", "Title");
             return View();
         }
 
@@ -50,6 +51,7 @@ namespace RealEstateConsultant.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateHouse(Housing housing)
         {
+
             var claimIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
             housing.ApplicationUserId = claim.Value;
